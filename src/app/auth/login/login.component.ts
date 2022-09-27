@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
-
+import { getTranslatedError } from '@nafuzi/firebase-auth-error-translator'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Ups...',
-          text: err.message,
+          text:  getTranslatedError('es',err.code) ,
         })
       })
    }

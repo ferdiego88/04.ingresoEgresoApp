@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import { getTranslatedError } from '@nafuzi/firebase-auth-error-translator'
 
 import { AuthService } from '../../services/auth.service';
 
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
       correo: ['',[ Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
+
   }
 
 
@@ -39,11 +40,12 @@ export class RegisterComponent implements OnInit {
         console.log(credenciales);
         this.router.navigate(['']);
       })
+
       .catch(err => {
         Swal.fire({
           icon: 'error',
           title: 'Ups...',
-          text: err.message,
+          text: getTranslatedError('es',err.code) ,
         })
       })
 
