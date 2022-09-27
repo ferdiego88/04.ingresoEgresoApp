@@ -33,11 +33,20 @@ export class RegisterComponent implements OnInit {
     if (this.registroForm.invalid) {
         return;
     }
+
+    Swal.fire({
+      title: 'Espere por favor!',
+      didOpen: () => {
+      Swal.showLoading()
+        }
+    })
+
      const {nombre, correo, password} = this.registroForm.value;
 
      this.authService.crearUsuario(nombre, correo, password)
       .then(credenciales => {
         console.log(credenciales);
+        Swal.close();
         this.router.navigate(['']);
       })
 

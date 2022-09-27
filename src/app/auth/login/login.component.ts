@@ -24,10 +24,22 @@ export class LoginComponent implements OnInit {
   }
 
    login() {
+
+      if (this.loginForm.invalid) {
+        return;
+      }
+
+    Swal.fire({
+      title: 'Espere por favor!',
+      didOpen: () => {
+      Swal.showLoading()
+        }
+    })
      const {email, password} = this.loginForm.value;
      this.authService.loginUsuario(email,password)
       .then(credenciales => {
         console.log(credenciales);
+        Swal.close();
         this.router.navigate(['/']);
       })
       .catch(err => {
