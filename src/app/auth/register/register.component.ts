@@ -17,13 +17,15 @@ import * as ui from '../../shared/ui.actions';
 })
 export class RegisterComponent implements OnInit,OnDestroy {
 
-  registroForm!: FormGroup;
+  registroForm: FormGroup;
   cargando = false;
   uiSuscription: Subscription = new Subscription
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private store: Store<AppState>) { }
+              private store: Store<AppState>) {
+                this.registroForm = this.fb.group({});
+              }
 
 
 
@@ -52,19 +54,19 @@ export class RegisterComponent implements OnInit,OnDestroy {
 
     this.store.dispatch(ui.isLoading());
 
-    Swal.fire({
-      title: 'Espere por favor!',
-      didOpen: () => {
-      Swal.showLoading()
-        }
-    })
+    // Swal.fire({
+    //   title: 'Espere por favor!',
+    //   didOpen: () => {
+    //   Swal.showLoading()
+    //     }
+    // })
 
      const {nombre, correo, password} = this.registroForm.value;
 
      this.authService.crearUsuario(nombre, correo, password)
       .then(credenciales => {
         console.log(credenciales);
-        Swal.close();
+        //Swal.close();
         this.store.dispatch(ui.stopLoading());
         this.router.navigate(['']);
       })
