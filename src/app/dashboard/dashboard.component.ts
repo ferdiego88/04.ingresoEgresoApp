@@ -34,7 +34,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
       this.ingresoSubs = this.ingresoEgresoService.initIngresosEgresosListener(user.uid)
         .subscribe(ingresosEgresos => {
-          console.log(ingresosEgresos);
           this.store.dispatch(ingresoEgresoActions.setItems({items: ingresosEgresos}))
         })
     })

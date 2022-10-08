@@ -5,10 +5,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Usuario } from '../models/usuario.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
+import { Subscription } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
-import { Subscription } from 'rxjs';
+import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +44,7 @@ export class AuthService {
           this._user = null;
           this.userSubcription.unsubscribe();
           this.store.dispatch(authActions.unSetUser())
-
+          this.store.dispatch(ingresoEgresoActions.unSetItems());
         }
 
     })
