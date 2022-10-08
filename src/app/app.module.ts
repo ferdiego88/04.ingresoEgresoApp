@@ -22,8 +22,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
-import { appReducers } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
