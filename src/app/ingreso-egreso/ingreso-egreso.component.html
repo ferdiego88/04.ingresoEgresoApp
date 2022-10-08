@@ -42,7 +42,7 @@
               [disabled]="ingresoForm.invalid || cargando">
               <i *ngIf="!cargando" class="fa fa-save"></i>
               <i *ngIf="cargando" class="fa fa-spin fa-sync"></i>
-              Agregar
+              {{ cargando ? 'Cargando':'Agregar' }}
             </button>
 
             <!--
