@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map, Observable } from 'rxjs';
 import { IngresoEgreso } from '../models/ingreso-egreso.model';
 import { AuthService } from './auth.service';
 
@@ -19,12 +20,15 @@ export class IngresoEgresoService {
       .add({...ingresoEgreso});
   }
 
-  initIngresosEgresosListener(uid: string) {
+  initIngresosEgresosListener(uid: string): Observable<IngresoEgreso[]> {
 
-    this.firestore.collection(`${uid}/ingresos-egresos/items`)
+    return this.firestore.collection(`${uid}/ingresos-egresos/items`)
     .valueChanges({idField: 'uid'})
-      .subscribe(data => {
-        console.log(data);
-      })
+    .pipe(
+      map ((data:any) => {
+       return  data
+      }
+        )
+    )
   }
 }

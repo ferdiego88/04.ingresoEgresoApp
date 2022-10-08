@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { filter, Subscription } from 'rxjs';
 import { AppState } from '../app.reducer';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
+import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +30,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     )
     .subscribe(({user}) => {
 
-      this.ingresoEgresoService.initIngresosEgresosListener(user.uid);
+      this.ingresoEgresoService.initIngresosEgresosListener(user.uid)
+        .subscribe(ingresosEgresos => {
+          console.log(ingresosEgresos);
+          this.store.dispatch(ingresoEgresoActions.setItems({items: ingresosEgresos}))
+        })
     })
 
 
