@@ -22,7 +22,7 @@ export class IngresoEgresoService {
 
   initIngresosEgresosListener(uid: string): Observable<IngresoEgreso[]> {
 
-    return this.firestore.collection(`${uid}/ingresos-egresos/items`)
+    return this.firestore.collection(`${uid}/ingresos-egresos/items`,refs => refs.orderBy('tipo','desc'))
     .valueChanges({idField: 'uid'})
     .pipe(
       map ((data:any) => {
