@@ -52,10 +52,8 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(ui.isLoading());
 
-
     const {descripcion, monto} = this.ingresoForm.value;
     const ingresoEgreso = new IngresoEgreso(descripcion,monto,this.TIPO);
-    delete ingresoEgreso.uid;
     this.ingresoEgresoService.crearIngresoEgreso(ingresoEgreso)
       .then( () => {
         this.ingresoForm.reset();
