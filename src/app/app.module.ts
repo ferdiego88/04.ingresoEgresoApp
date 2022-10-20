@@ -16,7 +16,6 @@ import { appReducers } from './app.reducer';
 import { NgChartsModule } from 'ng2-charts';
 
 import { AuthModule } from './auth/auth.module';
-import { IngresoEgresoModule } from './ingreso-egreso/ingreso-egreso.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { IngresoEgresoModule } from './ingreso-egreso/ingreso-egreso.module';
   imports: [
     BrowserModule,
     AuthModule,
-    IngresoEgresoModule,
     AppRoutingModule,
     NgChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
