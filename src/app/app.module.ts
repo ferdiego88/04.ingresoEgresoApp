@@ -1,21 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
-import {ReactiveFormsModule} from '@angular/forms';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso.component';
-import { EstadisticaComponent } from './ingreso-egreso/estadistica/estadistica.component';
-import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+
 import { environment } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -27,23 +15,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './app.reducer';
 import { NgChartsModule } from 'ng2-charts';
 
+import { AuthModule } from './auth/auth.module';
+import { IngresoEgresoModule } from './ingreso-egreso/ingreso-egreso.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
-    IngresoEgresoComponent,
-    EstadisticaComponent,
-    DetalleComponent,
-    FooterComponent,
-    NavbarComponent,
-    SidebarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    AuthModule,
+    IngresoEgresoModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     NgChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
