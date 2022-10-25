@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
