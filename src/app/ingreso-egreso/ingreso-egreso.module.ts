@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { StoreModule } from '@ngrx/store';
+import { ingresoEgresoReducer } from './ingreso-egreso.reducer';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
   ],
   imports: [
     CommonModule,
+    StoreModule.forFeature('ingresosEgresos',ingresoEgresoReducer),
     ReactiveFormsModule,
     NgChartsModule,
     SharedModule,
