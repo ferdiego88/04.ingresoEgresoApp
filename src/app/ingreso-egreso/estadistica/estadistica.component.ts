@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -24,7 +25,7 @@ export class EstadisticaComponent implements OnInit {
       datasets: [{ data: [] }]
     };
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppStateWithIngreso>) { }
 
   ingresos = 0;
   egresos = 0;
@@ -33,7 +34,6 @@ export class EstadisticaComponent implements OnInit {
   totalEgresos = 0;
 
   ngOnInit(): void {
-
     this.store.select('ingresosEgresos').subscribe( ({items}) => this.generarEstadistica(items))
   }
 
